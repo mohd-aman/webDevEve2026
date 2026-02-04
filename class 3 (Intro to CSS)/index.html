@@ -14,20 +14,42 @@
 
       #example{
         color:brown;
+        background-color: black;
+        background-image: url("https://media.istockphoto.com/id/517188688/photo/mountain-landscape.jpg?s=612x612&w=0&k=20&c=A63koPKaCyIwQWOTFBRWXj_PwCrR4cEoOw2S9Q7yVl8=");
+        background-repeat: no-repeat;
+        height: 500px;
+        width: 500px;
       }
 
       .batch {
         color: green;
         font-size: 50px;
+        font-family:Georgia, 'Times New Roman', Times;
       }
 
       h1 {
         color: red;
-        font-size: 50px;
+        font-size:50px;
+        background-color: black;
+        text-align: center;
+        text-decoration:underline
+      }
+
+      p{
+        font-weight:900;
       }
 
       h2 {
         color: blue;
+      }
+
+      #link{
+        color:blue;
+      }
+
+      /* pseudo class selector  */
+      #link:hover{
+        color:black;
       }
     </style>
   </head>
@@ -40,7 +62,7 @@
 
     <p class="batch">Hello I'm, a paragraph</p>
 
-    <a class="batch" href="#">I'm anchor tag</a>
+    <a id="link" class="batch" href="#">I'm anchor tag</a>
 
 
 

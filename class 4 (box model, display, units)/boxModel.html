@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box Model</title>
+    <style>
+        .container{
+            background-color: red;
+            height: 200px;
+            width: 200px;
+            border: 10px solid black;
+            margin: 20px;
+            padding: 10px;
+        }
+
+        .circular{
+            /* border-radius: 50%; */
+            border-top-left-radius: 50%;
+            border-bottom-right-radius: 50%;
+            border-top-right-radius: 20px;
+        }
+
+        .side{
+            border-top: 20px solid blue;
+            border-left: 30px solid yellow ;
+            border-bottom: 15px solid green ;
+            border-right: 5px solid orange ;
+            margin-top: 50px;
+            /* padding-left: 50px; */
+            /* it will be applied at all four sides  */
+            /* padding: 20px ; */
+            /* 10px will be applied at bottom and top, 20px will be applied at left and right  */
+            /* padding: 10px 20px; */
+            /* 20px will be applied to left and right, 10 at top, 30 at bottom  */
+            /* padding: 10px 20px 30px; */
+
+            /* clockwise starting from top, top, rigth, bottom, left  */
+            padding: 10px 20px 30px 40px;
+        
+        }
+    </style>
+</head>
+<body>
+    <div class="container first">
+        Hello world
+    </div>
+    <div class="container side">
+        Hello I have padding at left
+    </div>
+    <div class="container circular"></div>
+</body>
+</html>

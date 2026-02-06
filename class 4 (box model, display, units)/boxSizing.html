@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            background-color: grey;
+            height: 100px;
+            width: 100px;
+            margin:20px;
+            border: 10px solid red;
+            padding: 5px;
+        }
+
+        .content{
+            /* by default value of box-sizing:  is content box; */
+            box-sizing: content-box; 
+            /* height and iwdth will be applied to content, not to the complete box  */
+            /* height: 100px;
+            width: 100px;
+            padding: 20px;
+            border: 10px solid black; */
+        }
+
+        .border{
+            /* limit box heght and widht to given height and widht , don't increase it */
+           box-sizing: border-box;
+            /* total box width will be 100, including left border + right border + padding left + padding right  */
+            /* total box height will be 100, including left border + right border + padding left + padding right  */
+            /* height: 100px;
+            width: 100px;
+            border: 10px solid black;
+            padding: 20px; */
+        }
+    </style>
+</head>
+<body>
+    <div class="content box">content box</div>
+    <div class="border box">border box</div>
+</body>
+</html>

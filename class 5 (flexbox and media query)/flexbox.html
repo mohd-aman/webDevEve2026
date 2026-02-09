@@ -19,8 +19,8 @@
             justify-content:space-around;
 
             /* controls along the cross axis  */
-            /* align-items:center; */
-            flex-wrap: wrap;
+            /* align-items:baseline; */
+            /* flex-wrap: wrap; */
         }
         .box{
             height: 100px;
@@ -30,14 +30,34 @@
             color: white;
             font-size: 2rem;
         }
+        .one{
+            /* order: 4; */
+            flex-grow: 2;
+            /* font-size: 5rem; */
+        }
+        .two{
+            /* order: 3; */
+            flex-shrink: 2;
+            /* font-size: 10rem; */
+        }
+        .three{
+            /* order: 2; */
+            /* flex-shrink: 3; */
+            /* font-size: 10px; */
+            /* flex-grow: 1; */
+        }
+        .four{
+            /* order: 1; */
+            /* font-size: 50px; */
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="box">1</div>
-        <div class="box">2</div>
-        <div class="box">3</div>
-        <div class="box">4</div>
+        <div class="box one">1</div>
+        <div class="box two">2</div>
+        <div class="box three">3</div>
+        <div class="box four">4</div>
     </div>
 </body>
 </html>

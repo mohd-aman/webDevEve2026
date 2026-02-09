@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Media Query</title>
+
+    <style>
+      body {
+        font-size: 1rem;
+        margin: 20px;
+        background-color: orange;
+      }
+
+      /* Media query for devices with a screen width of 600 pixels or less */
+      @media only screen and (max-width: 600px) {
+        body {
+          font-size: 14px;
+          background-color: yellow;
+        }
+      }
+
+      /* Media query for devices with a screen width between 601 and 900 pixels */
+      @media only screen and (min-width: 601px) and (max-width: 900px) {
+        body {
+          font-size: 18px;
+          background-color: lightblue;
+        }
+        h1{
+            font-size: 5rem;
+        }
+      }
+
+      /* Media query for devices with a screen width of 901 pixels or more */
+      @media only screen and (min-width: 901px) {
+        body {
+          font-size: 20px;
+          background-color: lightgreen;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Responsive Design Example</h1>
+    <p>
+      This is a simple example demonstrating responsiveness using media queries.
+    </p>
+  </body>
+</html>

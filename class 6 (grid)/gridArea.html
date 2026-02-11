@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout</title>
+    <style>
+        body{
+            margin: 0px;
+            background-color: black;
+            height: 100vh;
+            width: 100vw;
+            display: grid;
+            grid-template-rows: 1fr 5fr 1fr;
+            grid-template-columns:1fr 5fr 1fr 1fr ;
+            grid-template-areas: 
+            'top   top    top   top'
+            'nav content side1 side2'
+            'nav bottom bottom bottom';
+        }
+        header,nav,main,aside,footer{
+            background-color: orange;
+            box-sizing: border-box;
+            border: 1px solid black;
+        }
+        header{
+            /* grid-column: 1/5; */
+            grid-area: top;
+        }
+        nav{
+            /* grid-row: 2/4; */
+            grid-area:nav
+        }
+        main{
+            grid-area: content;
+        }
+        .sidebarOne{
+            grid-area: side1;
+        }
+
+        .sidebarTwo{
+            grid-area: side2;
+        }
+
+        footer{
+            /* grid-column: 2/5; */
+            grid-area:bottom
+        }
+    </style>
+</head>
+<body>
+    <header>Headr</header>
+    <nav>Navigation</nav>
+    <main>Content</main>
+    <aside class="sidebarOne">Sidebar one</aside>
+    <aside class="sidebarTwo">Sidebar two</aside>
+    <footer>Footer</footer>
+</body>
+</html>

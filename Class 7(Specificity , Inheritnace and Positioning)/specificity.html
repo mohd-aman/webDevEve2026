@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Specificity</title>
+    <style>
+        li{
+            color:red !important;
+        }
+        #fruit.fav{
+            color: brown;
+            font-size: 40px;
+        }
+        li.fav{
+            color:yellow;
+        }
+        .fav{
+            color:blue;
+        }
+        li#fruit{
+            color:black !important;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hello world</h1>
+    <ul>
+        <li>First Item</li>
+        <li style="color:darkblue" id="fruit" class="fav">Second Item</li>
+        <li >Third Item</li>
+    </ul>
+
+    <p>I'm para</p>
+    <button>I'm a button</button>
+</body>
+</html>

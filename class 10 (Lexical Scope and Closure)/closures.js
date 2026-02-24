@@ -28,6 +28,7 @@
 
 var a = 30;
 function parent(){
+    var a = 10;
     function child1(){
         var b = 20;
         function child2(){

@@ -13,44 +13,51 @@
 // listTasks(): Lists all tasks, showing completed ones differently.
 
 function createTodoList() {
-    let list = [];
-    return{
-        addTask:function(taskName){
-            const oneEntry = {
-                task:taskName,
-                isCompleted:false
-            }
-            list.push(oneEntry);
-        },
-        listTasks:function(){
-            return list;
-        },
-        markComplete:function(taskName){
-            for(let i=0;i<list.length;i++){
-                const oneEntry = list[i];
-                if(oneEntry.task === taskName){
-                    oneEntry.isCompleted = true;
-                    return "updated task status";
-                }
-            }
-            return "Not found";
-        },
-        removeTask:function(taskName){
-            let index = -1;
-            for(let i=0;i<list.length;i++){
-                const oneEntry = list[i];
-                if(oneEntry.task === taskName){
-                    index = i;
-                }
-            }
-            if(index === -1){
-                return "Not found";
-            }else{
-                //Note: we won't be using splice much;
-                list.splice(index,1);
-            }
-        }
+  let list = [];
+  function addTask(taskName) {
+    const oneEntry = {
+      task: taskName,
+      isCompleted: false,
+    };
+    list.push(oneEntry);
+  }
+
+  function listTasks() {
+    return list;
+  }
+
+  function markComplete(taskName) {
+    for (let i = 0; i < list.length; i++) {
+      const oneEntry = list[i];
+      if (oneEntry.task === taskName) {
+        oneEntry.isCompleted = true;
+        return "updated task status";
+      }
     }
+    return "Not found";
+  }
+
+  function removeTask(taskName) {
+    let index = -1;
+    for (let i = 0; i < list.length; i++) {
+      const oneEntry = list[i];
+      if (oneEntry.task === taskName) {
+        index = i;
+      }
+    }
+    if (index === -1) {
+      return "Not found";
+    } else {
+      //Note: we won't be using splice much;
+      list.splice(index, 1);
+    }
+  }
+  return {
+    listTasks,
+    removeTask,
+    addTask,
+    markComplete,
+  };
 }
 
 const todo = createTodoList();

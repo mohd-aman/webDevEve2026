@@ -13,17 +13,55 @@
 // listTasks(): Lists all tasks, showing completed ones differently.
 
 function createTodoList() {
-
+    let list = [];
+    return{
+        addTask:function(taskName){
+            const oneEntry = {
+                task:taskName,
+                isCompleted:false
+            }
+            list.push(oneEntry);
+        },
+        listTasks:function(){
+            return list;
+        },
+        markComplete:function(taskName){
+            for(let i=0;i<list.length;i++){
+                const oneEntry = list[i];
+                if(oneEntry.task === taskName){
+                    oneEntry.isCompleted = true;
+                    return "updated task status";
+                }
+            }
+            return "Not found";
+        },
+        removeTask:function(taskName){
+            let index = -1;
+            for(let i=0;i<list.length;i++){
+                const oneEntry = list[i];
+                if(oneEntry.task === taskName){
+                    index = i;
+                }
+            }
+            if(index === -1){
+                return "Not found";
+            }else{
+                //Note: we won't be using splice much;
+                list.splice(index,1);
+            }
+        }
+    }
 }
 
 const todo = createTodoList();
 todo.addTask("Buy groceries");
 todo.addTask("Do laundry");
 todo.addTask("Clean room");
-todo.listTasks();
+console.log(todo.listTasks());
 console.log("-----");
-todo.markComplete("Buy groceries");
-todo.listTasks();
+console.log(todo.markComplete("Buy groceries"));
+console.log(todo.markComplete("Web Dev completed"));
+console.log(todo.listTasks());
 console.log("-----");
 todo.removeTask("Do laundry");
-todo.listTasks();
+console.log(todo.listTasks());

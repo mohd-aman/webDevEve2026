@@ -12,11 +12,31 @@
 // needs to remember a previous value what approach do we follow ?
 
 function createCounter(start) {
-  // Write your code here
+//   const initialValue = start;
+  let counter = start;
+  return {
+    increment:function(){
+        // start = start+1;
+        // return start;
+        return ++counter;
+    },
+    decrement:function(){
+        // start = start - 1;
+        // return start;
+        return --counter;
+    },
+    reset:function(){
+        // start = initialValue;
+        // return initialValue;
+        counter = start;
+        return counter;
+    }
+  }
 }
-
 const counter = createCounter(5);
 console.log(counter.increment()); // 6
 console.log(counter.increment()); //7
-console.log(counter.decrement()); // 6
+console.log(counter.increment())//8
+console.log(counter.decrement()); // 7
 console.log(counter.reset());     // 5
+console.log(counter.increment()); // ? ideally it should be 6

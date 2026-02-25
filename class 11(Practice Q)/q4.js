@@ -1,7 +1,3 @@
-// Create an array of book objects where each book has:
-
-// { title: "Book Name", author: "Author Name", isAvailable: true }
-
 // Write functions to:
 //     List all books.
 //     Mark a book as borrowed (isAvailable = false).
@@ -17,11 +13,25 @@ const books = [
 ];
 
 function listBooks() {
-  // Write your code here
+  return books;
 }
 
 function markAsBorrowed(title) {
   // Write your code here
+  for (let i = 0; i < books.length; i++) {
+    const book = books[i];
+    const nameOfTheBook = book.title;
+    const isAvailable = book.isAvailable;
+    if (title === nameOfTheBook) {
+      if (isAvailable) {
+        book.isAvailable = false;
+        return book;
+      } else {
+        return "Book is not available";
+      }
+    }
+  }
+  return `Book with the title: ${title} does not exist`;
 }
 
 function returnBook(title) {
@@ -31,3 +41,8 @@ function returnBook(title) {
 function findBooksByAuthor(author) {
   // Write your code here
 }
+
+console.log(listBooks());
+console.log(markAsBorrowed("Book2"));
+console.log(markAsBorrowed("Book2"));
+console.log(markAsBorrowed("Book8"));

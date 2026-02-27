@@ -18,7 +18,6 @@ function calculateCircumference(myRadiusArray){
     }
     return result;
 }
-
 function calculateDiameter(myRadiusArray){
     const result = [];
     for(let i=0;i<myRadiusArray.length;i++){

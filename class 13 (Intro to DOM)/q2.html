@@ -29,19 +29,24 @@
     </ul>
 </body>
 <script>
-    const ulElement = document.querySelector("ul");
-    const newlyCreatedLiElement = document.createElement('li');
-    newlyCreatedLiElement.innerText = '7'
-    // console.log(newlyCreatedLiElement);
-    // ulElement.appendChild(newlyCreatedLiElement);
-    const allLiElement = document.querySelectorAll('li');
-    console.log(allLiElement);
-    const elementBeforeToAdd = allLiElement[6];
-
-    ulElement.insertBefore(newlyCreatedLiElement,elementBeforeToAdd);
+    
 
     //during break, right now we are fixing it as sooon as page is loaded, 
-    // but now we want to fix it only when user clicks on fix list button
+    // but now we want to fix it only when user clicks on fix list button.
+
+        const btnElement = document.querySelector('button');
+        btnElement.addEventListener('click', function () {
+            const ulElement = document.querySelector("ul");
+            const newlyCreatedLiElement = document.createElement('li');
+            newlyCreatedLiElement.innerText = '7'
+            // console.log(newlyCreatedLiElement);
+            // ulElement.appendChild(newlyCreatedLiElement);
+            const allLiElement = document.querySelectorAll('li');
+            console.log(allLiElement);
+            const elementBeforeToAdd = allLiElement[6];
+
+            ulElement.insertBefore(newlyCreatedLiElement, elementBeforeToAdd);
+        })
 </script>
 
 </html>

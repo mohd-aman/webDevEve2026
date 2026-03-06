@@ -1,0 +1,30 @@
+<!-- Q1. On clicking the button append hello to the page. -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ </head>
+ <body>
+    <button id="btn">click me to add Hello</button>
+ </body>
+    <script>
+        // write this <h1>Hello</h1> code inside body tag through js 
+        const bodyElement = document.querySelector('body');
+        console.log(bodyElement);
+
+        // const btnElement = document.querySelector("#id");
+        const btnElement = document.getElementById("btn");
+        console.log(btnElement);
+
+        //keep an eye on btnElement for click, as soon as click happens execute cb
+        btnElement.addEventListener("click",cb)
+
+        function cb() {
+                const h1Element = document.createElement("h1");
+                h1Element.innerText = "Hello";
+                bodyElement.appendChild(h1Element);
+            }
+    </script>
+ </html>

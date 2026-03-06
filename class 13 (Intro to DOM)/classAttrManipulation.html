@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="myDiv" class="content visible">Hello, world!</div>
+</body>
+<script>
+    const divElement = document.querySelector("div");
+    console.log(divElement);
+    const classListVar = divElement.classList;
+    console.log(classListVar); // reading classes in the elements
+
+    //add a class
+    divElement.classList.add("highlight");
+
+    //remove a class from the classlist having name as 'visible'
+    divElement.classList.remove('visible');
+
+    //check if a class exist in the class list;
+    if(divElement.classList.contains('content')){
+        divElement.classList.remove('content');
+    }else{
+        divElement.classList.add("content");
+    }
+</script>
+</html>

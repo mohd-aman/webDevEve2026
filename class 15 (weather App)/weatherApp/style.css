@@ -35,7 +35,7 @@ input{
     outline: none;
     background: orange;
     border: none;
-    color: beige;
+    color: black;
     border-bottom: 2px solid black;
 }
 
@@ -43,7 +43,6 @@ button{
     font-size: 1.5rem;
     padding: 0.75rem;
     background: black;
-    color: beige;
-    border: 2px solid beige;
+    color: white;
     border-radius: 1rem;
 }

@@ -1,5 +1,6 @@
 const lockClass = "fa-lock"
 const unlockClass = "fa-unlock";
+const colorArr = ['red','blue','green','pink'];
 
 const addBtn = document.querySelector(".add");
 const deleteBtn = document.querySelector(".delete");
@@ -80,6 +81,7 @@ function createTicket(taskName,priorityColour){
     mainEle.appendChild(divEle);
     handleTicketDelete(divEle);
     handleLockMechanism(divEle);
+    handlePriorityChange(divEle);
 }
 
 function handleTicketDelete(ticket){
@@ -102,5 +104,28 @@ function handleLockMechanism(ticket){
             lockIcon.classList.add(lockClass);
             ticketContentEle.setAttribute('contenteditable','false');
         }
+    })
+}
+
+function handlePriorityChange(ticket){
+    const priorityTag = ticket.querySelector('.priority');
+    priorityTag.addEventListener('click',function(){
+        const currentPriorityCol = priorityTag.classList[1];
+        let currentColIndex;
+        for(let i=0;i<colorArr.length;i++){
+            if(colorArr[i] === currentPriorityCol){
+                currentColIndex = i;
+                break;
+            }
+        }
+        let nextColorIndex;
+        if(currentColIndex === colorArr.length-1){ //it is edge case, we are at the last we need to go back 0th index
+            nextColorIndex = 0;
+        }else{
+            nextColorIndex = currentColIndex+1;
+        }
+        const nextPriorityCol = colorArr[nextColorIndex];
+        priorityTag.classList.remove(currentPriorityCol);
+        priorityTag.classList.add(nextPriorityCol);
     })
 }

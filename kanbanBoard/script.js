@@ -7,10 +7,40 @@ const deleteBtn = document.querySelector(".delete");
 const modal = document.querySelector('.modal');
 const mainEle = document.querySelector('main');
 const allPriorityColor = document.querySelectorAll('.priority-color');
+const allFilterBoxes = document.querySelectorAll('.box');
 
 let isModalVisible = false;
 let isDeleteActive = false;
 let newlyCreatedTaskPriority = 'red';
+
+
+//filteration of ticket 
+for(let i=0;i<allFilterBoxes.length;i++){
+
+    allFilterBoxes[i].addEventListener('click',function(e){
+        const selectedBoxCol = allFilterBoxes[i].classList[1];
+        //next step will be to show/hide tickets available at this point in the DOM;
+        const allTicketsCurrently = document.querySelectorAll(".ticket");
+        for(let j=0;j<allTicketsCurrently.length;j++){
+            const currentTicketPriorityEle = allTicketsCurrently[j].querySelector('.priority');
+            const currentTicketPriorityCol = currentTicketPriorityEle.classList[1];
+            if(selectedBoxCol === currentTicketPriorityCol){
+                allTicketsCurrently[j].style.display = 'block';
+            }else{
+                allTicketsCurrently[j].style.display = 'none';
+            }
+        }
+    })
+
+    //show all tickets on double click
+    allFilterBoxes[i].addEventListener('dblclick',function(e){
+        const allTicketsCurrently = document.querySelectorAll(".ticket");
+        for(let j=0;j<allTicketsCurrently.length;j++){
+            allTicketsCurrently[j].style.display = 'block';
+        }
+    })
+
+}
 
 addBtn.addEventListener('click',function(e){
     // console.log("Click happened on Plus icon");
@@ -123,7 +153,7 @@ function handlePriorityChange(ticket){
             nextColorIndex = 0;
         }else{
             nextColorIndex = currentColIndex+1;
-        }
+        }// try to achieve this if else logic in single line
         const nextPriorityCol = colorArr[nextColorIndex];
         priorityTag.classList.remove(currentPriorityCol);
         priorityTag.classList.add(nextPriorityCol);

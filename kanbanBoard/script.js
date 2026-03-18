@@ -1,3 +1,6 @@
+const lockClass = "fa-lock"
+const unlockClass = "fa-unlock";
+
 const addBtn = document.querySelector(".add");
 const deleteBtn = document.querySelector(".delete");
 const modal = document.querySelector('.modal');
@@ -76,11 +79,28 @@ function createTicket(taskName,priorityColour){
                         </i></div>`
     mainEle.appendChild(divEle);
     handleTicketDelete(divEle);
+    handleLockMechanism(divEle);
 }
 
 function handleTicketDelete(ticket){
     ticket.addEventListener('click',function(){
         //can we know somehow? what is the state of delete icon? 
         if(isDeleteActive) ticket.remove();
+    })
+}
+
+function handleLockMechanism(ticket){
+    const lockIcon = ticket.querySelector('.lock>i'); //it is selecting child i of element having lock class
+    const ticketContentEle = ticket.querySelector('.ticketContent');
+    lockIcon.addEventListener('click',function(){
+        if(lockIcon.classList.contains(lockClass)){ // making ticket editable
+            lockIcon.classList.remove(lockClass);
+            lockIcon.classList.add(unlockClass);
+            ticketContentEle.setAttribute('contenteditable','true');
+        }else{ // making ticket not editable
+            lockIcon.classList.remove(unlockClass);
+            lockIcon.classList.add(lockClass);
+            ticketContentEle.setAttribute('contenteditable','false');
+        }
     })
 }

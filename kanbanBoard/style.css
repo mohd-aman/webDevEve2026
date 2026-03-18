@@ -84,6 +84,11 @@ main{
 .ticketId{
     font-weight: 600;
     padding-left: 0.5rem;
+    height: 1rem;
+}
+
+.ticketContent{
+    height: 10rem;
 }
 
 .lock{

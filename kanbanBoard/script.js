@@ -1,9 +1,11 @@
 const addBtn = document.querySelector(".add");
+const deleteBtn = document.querySelector(".delete");
 const modal = document.querySelector('.modal');
 const mainEle = document.querySelector('main');
 const allPriorityColor = document.querySelectorAll('.priority-color');
 
 let isModalVisible = false;
+let isDeleteActive = false;
 let newlyCreatedTaskPriority = 'red';
 
 addBtn.addEventListener('click',function(e){
@@ -14,6 +16,16 @@ addBtn.addEventListener('click',function(e){
     }else{
         modal.style.display = 'flex'; //show modal, this is for UI.
         isModalVisible = true;
+    }
+})
+
+deleteBtn.addEventListener('click',function(){
+    if(isDeleteActive){
+        deleteBtn.classList.remove("delete-active"); // UI change
+        isDeleteActive = false;
+    }else{
+        deleteBtn.classList.add("delete-active"); // UI change
+        isDeleteActive = true; // update the state
     }
 })
 
@@ -63,4 +75,12 @@ function createTicket(taskName,priorityColour){
                             <i class="fa fa-lock">
                         </i></div>`
     mainEle.appendChild(divEle);
+    handleTicketDelete(divEle);
+}
+
+function handleTicketDelete(ticket){
+    ticket.addEventListener('click',function(){
+        //can we know somehow? what is the state of delete icon? 
+        if(isDeleteActive) ticket.remove();
+    })
 }

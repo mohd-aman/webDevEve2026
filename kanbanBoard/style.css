@@ -132,3 +132,7 @@ main{
 .active{
     border: 3px solid yellow;
 }
+
+.delete-active{
+    color: red;
+}

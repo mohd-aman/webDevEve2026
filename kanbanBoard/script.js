@@ -138,7 +138,7 @@ function createTicket(taskName,priorityColour,uniqueId){
     mainEle.appendChild(divEle);
     handleTicketDelete(divEle);
     handleLockMechanism(divEle,uniqueId);
-    handlePriorityChange(divEle);
+    handlePriorityChange(divEle,uniqueId);
 }
 
 function handleTicketDelete(ticket){
@@ -168,7 +168,7 @@ function handleLockMechanism(ticket,id){
     })
 }
 
-function handlePriorityChange(ticket){
+function handlePriorityChange(ticket,id){
     const priorityTag = ticket.querySelector('.priority');
     priorityTag.addEventListener('click',function(){
         const currentPriorityCol = priorityTag.classList[1];
@@ -188,6 +188,9 @@ function handlePriorityChange(ticket){
         const nextPriorityCol = colorArr[nextColorIndex];
         priorityTag.classList.remove(currentPriorityCol);
         priorityTag.classList.add(nextPriorityCol);
+        const idx = getIdx(id); // it will give index of ticketOnUI array based on ui ticket id
+        ticketsOnUI[idx].taskPriorityCol = nextPriorityCol; // updated only state from UI. 
+        localStorage.setItem(ticketStorageKey,JSON.stringify(ticketsOnUI)); // update the LS from state;
     })
 }
 

@@ -1,5 +1,6 @@
 const lockClass = "fa-lock"
 const unlockClass = "fa-unlock";
+const ticketStorageKey = 'KanbanTickets';
 const colorArr = ['red','blue','green','pink'];
 
 const addBtn = document.querySelector(".add");
@@ -12,6 +13,22 @@ const allFilterBoxes = document.querySelectorAll('.box');
 let isModalVisible = false;
 let isDeleteActive = false;
 let newlyCreatedTaskPriority = 'red';
+let ticketsOnUI;
+
+if(localStorage.getItem(ticketStorageKey)){
+    const ticketDatafromLS = localStorage.getItem(ticketStorageKey);
+    ticketsOnUI = JSON.parse(ticketDatafromLS);
+}else{
+    ticketsOnUI = []; //means user is coming for the very first time.
+}
+
+console.log(ticketsOnUI);
+
+for(let i=0;i<ticketsOnUI.length;i++){
+    const ticketDetail = ticketsOnUI[i];
+    //creating from localstorage data
+    createTicket(ticketDetail.taskName,ticketDetail.taskPriorityCol,ticketDetail.taskId);
+}
 
 
 //filteration of ticket 
@@ -78,7 +95,18 @@ for(let i=0;i<allPriorityColor.length;i++){
 modal.addEventListener('keydown',function(e){
     const key = e.key;
     if(key === 'Shift'){
-        createTicket(e.target.value,newlyCreatedTaskPriority);
+        const uniqueId = crypto.randomUUID().split('-')[0];
+        const taskName = e.target.value;
+        //when user created a ticket from UI
+        createTicket(taskName,newlyCreatedTaskPriority,uniqueId);
+         //let's keep our ticketsOnUI array in sync of UI. 
+        ticketsOnUI.push({
+            taskName:taskName,
+            taskPriorityCol:newlyCreatedTaskPriority,
+            taskId:uniqueId
+        })
+        //update the localStorage with updated tickets data
+        localStorage.setItem(ticketStorageKey,JSON.stringify(ticketsOnUI));
         modal.style.display = 'none'; // once ticket is created hide the modal, it is UI
         isModalVisible = false; // update the state 
         e.target.value = "" // make the modal value as empty
@@ -98,10 +126,9 @@ modal.addEventListener('keydown',function(e){
 // createTicket("Learn JS","blue");
 // createTicket("Something else","pink");
 
-function createTicket(taskName,priorityColour){
+function createTicket(taskName,priorityColour,uniqueId){
     const divEle = document.createElement('div');
     divEle.setAttribute('class','ticket');
-    const uniqueId = crypto.randomUUID().split('-')[0];
     divEle.innerHTML = `<div class="priority ${priorityColour}"></div>
                         <div class="ticketId">#${uniqueId}</div>
                         <div class="ticketContent">${taskName}</div>
@@ -147,7 +174,7 @@ function handlePriorityChange(ticket){
                 currentColIndex = i;
                 break;
             }
-        }
+        }// try to use HOF
         let nextColorIndex;
         if(currentColIndex === colorArr.length-1){ //it is edge case, we are at the last we need to go back 0th index
             nextColorIndex = 0;

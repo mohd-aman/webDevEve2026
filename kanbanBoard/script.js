@@ -137,7 +137,7 @@ function createTicket(taskName,priorityColour,uniqueId){
                         </i></div>`
     mainEle.appendChild(divEle);
     handleTicketDelete(divEle);
-    handleLockMechanism(divEle);
+    handleLockMechanism(divEle,uniqueId);
     handlePriorityChange(divEle);
 }
 
@@ -148,7 +148,7 @@ function handleTicketDelete(ticket){
     })
 }
 
-function handleLockMechanism(ticket){
+function handleLockMechanism(ticket,id){
     const lockIcon = ticket.querySelector('.lock>i'); //it is selecting child i of element having lock class
     const ticketContentEle = ticket.querySelector('.ticketContent');
     lockIcon.addEventListener('click',function(){
@@ -160,6 +160,10 @@ function handleLockMechanism(ticket){
             lockIcon.classList.remove(unlockClass);
             lockIcon.classList.add(lockClass);
             ticketContentEle.setAttribute('contenteditable','false');
+            const updatedTask = ticketContentEle.innerText; //UI -> Code. 
+            const idx = getIdx(id);
+            ticketsOnUI[idx].taskName = updatedTask // state updated from UI;
+            localStorage.setItem(ticketStorageKey,JSON.stringify(ticketsOnUI));//update LS from state
         }
     })
 }
@@ -185,4 +189,14 @@ function handlePriorityChange(ticket){
         priorityTag.classList.remove(currentPriorityCol);
         priorityTag.classList.add(nextPriorityCol);
     })
+}
+
+function getIdx(id){
+    for(let i=0;i<ticketsOnUI.length;i++){
+        const ticketObj = ticketsOnUI[i];
+        if(ticketObj.taskId === id){
+            return i;
+        }
+    }
+    return null; // could not find id in the array, 
 }

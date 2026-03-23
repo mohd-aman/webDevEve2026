@@ -22,8 +22,6 @@ if(localStorage.getItem(ticketStorageKey)){
     ticketsOnUI = []; //means user is coming for the very first time.
 }
 
-console.log(ticketsOnUI);
-
 for(let i=0;i<ticketsOnUI.length;i++){
     const ticketDetail = ticketsOnUI[i];
     //creating from localstorage data
@@ -136,15 +134,20 @@ function createTicket(taskName,priorityColour,uniqueId){
                             <i class="fa fa-lock">
                         </i></div>`
     mainEle.appendChild(divEle);
-    handleTicketDelete(divEle);
+    handleTicketDelete(divEle,uniqueId);
     handleLockMechanism(divEle,uniqueId);
     handlePriorityChange(divEle,uniqueId);
 }
 
-function handleTicketDelete(ticket){
+function handleTicketDelete(ticket,id){
     ticket.addEventListener('click',function(){
         //can we know somehow? what is the state of delete icon? 
-        if(isDeleteActive) ticket.remove();
+        if(isDeleteActive) {
+            ticket.remove();//ticket removed from UI;
+            const idx = getIdx(id);
+            ticketsOnUI.splice(idx,1);// state updated in sync with UI
+            localStorage.setItem(ticketStorageKey,JSON.stringify(ticketsOnUI));
+        }
     })
 }
 

@@ -26,6 +26,7 @@ for(let i=0;i<ticketsOnUI.length;i++){
     const ticketDetail = ticketsOnUI[i];
     //creating from localstorage data
     createTicket(ticketDetail.taskName,ticketDetail.taskPriorityCol,ticketDetail.taskId);
+    //we are not updating the state and LS in this case.
 }
 
 

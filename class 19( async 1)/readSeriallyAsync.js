@@ -11,3 +11,15 @@ fs.readFile("f1.txt", function (error, data1) {
   });
 });
 console.log("end");
+
+fs.readFile('f1.txt',function(error,data){
+    console.log("f1 data " + data);
+})
+
+fs.readFile('f2.txt',function(error,data){
+    console.log("f2 data " + data);
+})
+
+fs.readFile('f3.txt',function(error,data){
+    console.log("f3 data " + data);
+})

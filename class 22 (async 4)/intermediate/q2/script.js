@@ -6,6 +6,9 @@
 
 document.getElementById("fetchDogsBtn").addEventListener("click", fetchDogs);
 
+const loadingEle = document.createElement('p');
+loadingEle.innerText = "Loading...."
+
 async function fetchDogs() {
   try {
     const urls = [
@@ -13,12 +16,21 @@ async function fetchDogs() {
       "https://dog.ceo/api/breeds/image/random",
       "https://dog.ceo/api/breeds/image/random",
     ];
+    const container = document.querySelector('#dogContainer');
+    container.appendChild(loadingEle);
     const responeValuesArray = await Promise.all(urls.map((url)=>fetch(url)));
     const dataValuesArray = await Promise.all(responeValuesArray.map((resp)=>resp.json()));
-    console.log(dataValuesArray);
-    
-    // Write code here...
-    
+    // for(let i=0;i<dataValuesArray.length;i++){
+    //     const imgTag = document.createElement('img');
+    //     imgTag.src = dataValuesArray[i].message;
+    //     container.appendChild(imgTag);
+    // }
+    container.innerHTML = "";
+    dataValuesArray.forEach((data)=>{
+        const imgTag = document.createElement('img');
+        imgTag.src = data.message;
+        container.appendChild(imgTag);
+    })
   } catch (error) {
     alert("Error fetching dog images: " + error.message);
   }

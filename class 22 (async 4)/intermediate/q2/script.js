@@ -13,7 +13,10 @@ async function fetchDogs() {
       "https://dog.ceo/api/breeds/image/random",
       "https://dog.ceo/api/breeds/image/random",
     ];
-
+    const responeValuesArray = await Promise.all(urls.map((url)=>fetch(url)));
+    const dataValuesArray = await Promise.all(responeValuesArray.map((resp)=>resp.json()));
+    console.log(dataValuesArray);
+    
     // Write code here...
     
   } catch (error) {

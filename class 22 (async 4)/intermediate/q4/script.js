@@ -23,8 +23,8 @@ async function fetchSpaceFact() {
   const api3 = fetch("http://api.open-notify.org/astros.json").then(res => res.json());
 
   try {
-
-    // Write code here
+    const firstOneToResolve = await Promise.any([api1,api2,api3]);
+    console.log(firstOneToResolve);
 
   } catch (error) {
     factContainer.style.display = "block";

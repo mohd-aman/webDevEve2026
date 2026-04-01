@@ -6,6 +6,10 @@
 
 function fakeDownload(url, callback) {
   // Write code here...
+  console.log(`Downloading from ${url}`);
+  setTimeout(()=>{
+    callback('Download complete!');
+  },2000);
 }
 
 // Usage:

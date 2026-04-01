@@ -3,6 +3,12 @@
 
 function fakeDownload(url) {
   // Write code here...
+  console.log(`Downloading from ${url}`);
+  return new Promise(function(resolve,reject){
+    setTimeout(()=>{
+      resolve('Download complete!');
+    },2000)
+  })
 }
 
 // Usage:

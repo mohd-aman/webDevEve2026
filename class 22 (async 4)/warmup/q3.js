@@ -4,6 +4,13 @@
 
 function fetchCatFact() {
   // Write code here...
+  fetch("https://catfact.ninja/fact")
+    .then((resp) => resp.json())
+    .then((data) => {
+      console.log(data.fact);
+    }).catch((error)=>{
+      console.log(error.message);
+    })
 }
 
 // Usage:

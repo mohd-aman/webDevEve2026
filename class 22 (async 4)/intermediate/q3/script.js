@@ -10,6 +10,21 @@ document.getElementById("retryFetchBtn").addEventListener("click", () => {
 
 async function fetchWithRetry(url, retries) {
   const statusElement = document.getElementById("status");
-
-  // Write code here
+  for(let attempt=1;attempt<=retries;attempt++){
+    try{
+        const resp = await fetch(url);
+        if(!resp.ok){
+            throw new Error("Attempt failed : " + attempt);
+        }
+        const data = await resp.json();
+        statusElement.innerText = "Success!";
+        return data;
+    }catch(error){
+        if(attempt === retries){
+            statusElement.innerText = "All Attempts Failed";
+        }else{
+            statusElement.innerText = "Error : " + error.message;
+        }
+    }
+  }
 }

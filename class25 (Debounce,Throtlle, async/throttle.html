@@ -30,16 +30,29 @@
         const throttledProccesScroll = throttle(processScroll,200);
         window.addEventListener('scroll', throttledProccesScroll);
 
-        function throttle(func,wait){
-            let prevTime;
-            return function(){
-                const currentTime = new Date().getTime();
-                if(!prevTime || ((currentTime - prevTime) >= wait)){
-                    func();
+        // function throttle(func,wait){
+        //     let prevTime;
+        //     return function(){
+        //         const currentTime = new Date().getTime();
+        //         if(!prevTime || ((currentTime - prevTime) >= wait)){
+        //             func();
+        //         }
+        //         prevTime = currentTime;               
+        //     }
+        // }
+
+            function throttle(func, delay) {
+                    let timer = null;
+                    return function () {
+                        if (!timer) {
+                            func();
+                            timer = setTimeout(() => {
+                                clearTimeout(timer);
+                                timer = null;
+                            }, delay);
+                        }
+                    }
                 }
-                prevTime = currentTime;               
-            }
-        }
     </script>
 </body>
 </html>

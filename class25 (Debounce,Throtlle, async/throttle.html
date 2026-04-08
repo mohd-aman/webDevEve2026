@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unthrottled Scroll Example</title>
+    <style>
+        body, html {
+            height: 3000px; /* Ensure there's enough space to scroll */
+        }
+        .status {
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="status">Scroll position: <span id="scrollPosition">0</span></div>
+
+    <script>
+        const processScroll = () => {
+            document.getElementById('scrollPosition').textContent = window.scrollY;
+
+            console.log('scrolled')
+        }
+        const throttledProccesScroll = throttle(processScroll,200);
+        window.addEventListener('scroll', throttledProccesScroll);
+
+        function throttle(func,wait){
+            let prevTime;
+            return function(){
+                const currentTime = new Date().getTime();
+                if(!prevTime || ((currentTime - prevTime) >= wait)){
+                    func();
+                }
+                prevTime = currentTime;               
+            }
+        }
+    </script>
+</body>
+</html>

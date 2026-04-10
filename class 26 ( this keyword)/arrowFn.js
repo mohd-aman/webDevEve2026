@@ -31,29 +31,34 @@ regularFuncVar(); // Output: Regular function: undefined (or an error in strict 
 
 
 
-console.log(this);
+console.log(this); // {}
 
 // Define an object
 const obj2 = {
   name: 'John',
-//   fn:function(){
-//     console.log("Outer fnc");
-//     console.log(this);
-//     const nested = ()=>{
-//         console.log("Nested Arrow lexical resolved")
-//         console.log(this);
-//     }
-//     nested();
-//   },
+  fn:function(){
+    console.log("Outer fnc");
+    console.log(this);
+    const nested = ()=>{
+        console.log("Nested Arrow lexical resolved")
+        console.log(this);
+    }
+    nested();
+  },
   arrowFunc: () => {
     console.log(this);
     console.log('Arrow function:', this.name);
+    const nested = ()=>{
+        console.log("Nested Arrow lexical resolved")
+        console.log(this);
+    }
+    nested();
   }
 };
 
-// obj2.fn();
-// const obj2Fn = obj2.fn;
-// obj2Fn();
+obj2.fn();
+const obj2Fn = obj2.fn;
+obj2Fn();
 
 
 obj2.arrowFunc();

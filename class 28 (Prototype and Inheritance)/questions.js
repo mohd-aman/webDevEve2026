@@ -82,5 +82,5 @@ const fluffy = new Cat("Fluffy");
 fluffy.__proto__ = { age: 5 };
 
 console.log(fluffy.age);
-console.log(fluffy.hasOwnProperty('age'));
+console.log(fluffy.hasOwnProperty('age')); // be cautious before answering
 console.log(fluffy.__proto__ === Cat.prototype);

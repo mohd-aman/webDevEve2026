@@ -3,8 +3,9 @@ const car = {
     color:"black"
 }
 
-function buyCar(price){
+function buyCar(price,alloys){
     console.log(`I bought a ${this.color} ${this.name} of ${price}`);
+    console.log("Alloys", alloys);
 }
 
 // buyCar.call(car,3);
@@ -51,5 +52,6 @@ Function.prototype.myBind = function(obj,...args){
     }
 }
 
-const bindedFxn = buyCar.myBind(car);
-bindedFxn(3);
+const bindedFxn = buyCar.myBind(car,3);
+bindedFxn(true);
+bindedFxn(false);

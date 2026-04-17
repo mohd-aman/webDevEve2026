@@ -13,12 +13,12 @@ const person2 = {
     location:"Delhi"
 }
 
-person1.printNameAndAge("Delhi","N/A"); //method invocation
+// person1.printNameAndAge("Delhi","N/A"); //method invocation
 // person2.printNameAndAge();//? error as key does not exist
 
 
 // to borrow function
-person1.printNameAndAge.call(person2,"Delhi","Male"); //invokes right away
+// person1.printNameAndAge.call(person2,"Delhi","Male"); //invokes right away
 
 // func.call() // why - prototype of Function
 // arr.filter()//why - due to prototype of Array 

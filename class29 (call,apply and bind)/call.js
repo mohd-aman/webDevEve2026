@@ -18,7 +18,7 @@ person1.printNameAndAge("Delhi","N/A"); //method invocation
 
 
 // to borrow function
-person1.printNameAndAge.call(person2,"Delhi","Male");
+person1.printNameAndAge.call(person2,"Delhi","Male"); //invokes right away
 
 // func.call() // why - prototype of Function
 // arr.filter()//why - due to prototype of Array 

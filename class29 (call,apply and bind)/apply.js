@@ -15,7 +15,7 @@ const person2 = {
 person1.describe("Walls","Male");
 
 //person1.describe - function
-person1.describe.apply(person2,["Delhi","N/A"]);
+person1.describe.apply(person2,["Delhi","N/A"]); //invoke function right away
 
 // why apply is needed 
 

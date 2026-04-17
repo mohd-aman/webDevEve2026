@@ -43,3 +43,13 @@ Function.prototype.myApply = function(obj={},arr=[]){
 
 buyCar.myCall(car,3); // our own call polyfill
 buyCar.myApply(car,[3]);
+
+Function.prototype.myBind = function(obj,...args){
+    const targetFxn = this;//fxn;
+    return function(...args2){
+        return targetFxn.call(obj,...args,...args2);
+    }
+}
+
+const bindedFxn = buyCar.myBind(car);
+bindedFxn(3);

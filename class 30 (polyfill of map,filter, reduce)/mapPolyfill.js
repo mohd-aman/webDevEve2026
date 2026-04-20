@@ -26,3 +26,6 @@ if(!Array.prototype.myMap){
 }
 const sqArr = arr.myMap(cb);
 console.log(sqArr);
+
+const cubicArr = arr.myMap((ele)=>ele*ele*ele);
+console.log(cubicArr);

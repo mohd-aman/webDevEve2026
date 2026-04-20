@@ -26,3 +26,9 @@ const even2Arr = arr.myFilter(cb);
 console.log(even2Arr);
 const odd = arr.myFilter((ele)=>ele%2 !== 0);
 console.log(odd);
+
+
+const sparseArr = [2,4,5,6,,8,9,,0];
+console.log(sparseArr);
+console.log(sparseArr.filter((ele)=>ele%2===0));
+console.log(sparseArr.map((ele)=>ele*2));

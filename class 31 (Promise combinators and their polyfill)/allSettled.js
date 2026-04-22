@@ -20,3 +20,34 @@ Promise.allSettled([fetchUserData(),fetchUserPost()])
 }).catch((error)=>{
     console.log(error);
 })
+
+
+//polyfill of myAllSettled is homeworkd
+
+Promise.myAllSettled = function(arrOfPromises){
+    return new Promise((resolve,reject)=>{
+        const result = [];
+        let count = 0;
+        arrOfPromises.forEach((promiseItem,index)=>{
+            promiseItem.then((res)=>{
+                result[index] = {status:"fulfilled",value:res};
+            }).catch((reason)=>{
+                result[index] = {status:"rejected", reason:reason};
+            }).finally(()=>{
+                count++;
+                if(count === arrOfPromises.length){
+                    resolve(result);
+                }
+            })
+        })
+    })
+}
+
+Promise.myAllSettled([fetchUserData(),fetchUserPost()])
+.then((result)=>{
+    console.log(result);
+}).catch((error)=>{
+    console.log(error);
+})
+
+console.log(Promise);

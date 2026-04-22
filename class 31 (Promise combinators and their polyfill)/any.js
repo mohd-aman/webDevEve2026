@@ -31,12 +31,12 @@ Promise.any([rejectSlowly(),rejectFast(),quickResolve(),resolveSlowly()])
     console.log(error);
 })
 
-Promise.race([rejectSlowly(),rejectFast(),quickResolve(),resolveSlowly()])
-.then((result)=>{
-    console.log(result);
-}).catch((error)=>{
-    console.log(error);
-})
+// Promise.race([rejectSlowly(),rejectFast(),quickResolve(),resolveSlowly()])
+// .then((result)=>{
+//     console.log(result);
+// }).catch((error)=>{
+//     console.log(error);
+// })
 
 // Promise.any([rejectSlowly(),rejectFast(),resolveSlowly()])
 // .then((result)=>{
@@ -51,3 +51,39 @@ Promise.race([rejectSlowly(),rejectFast(),quickResolve(),resolveSlowly()])
 // }).catch((error)=>{
 //     console.log(error);
 // })
+
+
+Promise.myAny = function(arrOfPromises){
+    return new Promise((resolve,reject)=>{
+        if(arrOfPromises.length === 0){
+            reject(new AggregateError("No Promises were provided"));
+        }
+        let rejections = [];
+        let count = 0;
+        arrOfPromises.forEach((promiseItem,index)=>{
+            promiseItem.then((res)=>{
+                resolve(res);
+            }).catch((reason)=>{
+                count++;
+                rejections[index] = reason;
+                if(count === arrOfPromises.length){
+                    reject(new AggregateError(rejections,'All Promises were rejected'));
+                }
+            })
+        })
+    })
+}
+
+Promise.any([rejectSlowly(),rejectFast(),quickResolve(),resolveSlowly()])
+.then((result)=>{
+    console.log(result);
+}).catch((error)=>{
+    console.log(error);
+})
+
+Promise.myAny([rejectSlowly(),rejectFast()])
+.then((result)=>{
+    console.log(result);
+}).catch((error)=>{
+    console.log(error);
+})

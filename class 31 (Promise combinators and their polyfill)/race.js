@@ -19,3 +19,29 @@ Promise.race([quickResolve(),slowResolveOrFastReject()])
     console.log("rejected");
     console.log(error);
 })
+
+
+
+Promise.myRace = function(arrOfPromises){
+    return new Promise((resolve,reject)=>{
+        if(arrOfPromises.length === 0){
+            throw new Error("Cannot perform Promise.myRace on an empty array");
+        }
+        arrOfPromises.forEach((promiseItem)=>{
+            promiseItem.then((res)=>{
+                resolve(res);
+            }).catch((reason)=>{
+                reject(reason);
+            })
+        })
+    })
+}
+
+Promise.myRace([quickResolve(),slowResolveOrFastReject()])
+.then((result)=>{
+    console.log("resolved");
+    console.log(result);
+}).catch((error)=>{
+    console.log("rejected");
+    console.log(error);
+})

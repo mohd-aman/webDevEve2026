@@ -28,8 +28,13 @@
         // 1. The tag name of the HTML element to create
         // 2. The properties of the element (or null if none) Adding null here for now we will discuss props later
         // 3. The children of this element (or text content)
-        const headingElement = React.createElement("h1",null,"Hello from React");
-        console.log(headingElement);
+        // const headingElement = React.createElement("h1",null,"Hello from React");
+        const headingElement = React.createElement("h1",
+                {
+                    style: { color: 'blue' }
+                }
+                , "Hello from React");
+            console.log(headingElement);
 
         // Render the element to the DOM using ReactDOM
         // ReactDOM.render takes two arguments:

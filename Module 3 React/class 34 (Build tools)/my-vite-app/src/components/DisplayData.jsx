@@ -12,8 +12,8 @@ export default function DisplayData({fruits,person}) {
         <li>{fruits[1]}</li>
         <li>{fruits[2]}</li> */}
         {
-            fruits.map((fruite)=>{
-                return <li>{fruite}</li>
+            fruits.map((fruite,index)=>{
+                return <li key={index}>{fruite}</li>
             })
         }
       </ul>

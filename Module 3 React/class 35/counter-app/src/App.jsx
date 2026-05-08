@@ -8,6 +8,7 @@ import UserCard from './components/UserCard'
 import User from './data/User'
 import ProductList from './components/ProductList'
 import Products from './data/Product'
+import Todo from './components/Todo'
 
 function App() {
   return(
@@ -15,6 +16,7 @@ function App() {
       <Counter/>
       <UserCard user={User} />  
       <ProductList products={Products}/>
+      <Todo/>
     </div>
   )
 }

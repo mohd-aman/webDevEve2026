@@ -30,8 +30,8 @@ export default function Counter(){
 // vanilla js code 
 // const  btn = document.querySelector('button');
 // const h3Ele = document.querySelector('h3');
-// let count = 0;
+// let count = 10;
 // btn.addEventListener('click',()=>{
-//     count++;
-//     h3Ele.innerText = count;
+//     count++; //updating variable 
+//     h3Ele.innerText = count; //updating UI
 // })

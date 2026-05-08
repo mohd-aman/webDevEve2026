@@ -6,12 +6,15 @@ import './App.css'
 import Counter from './components/Counter'
 import UserCard from './components/UserCard'
 import User from './data/User'
+import ProductList from './components/ProductList'
+import Products from './data/Product'
 
 function App() {
   return(
     <div>
       <Counter/>
       <UserCard user={User} />  
+      <ProductList products={Products}/>
     </div>
   )
 }

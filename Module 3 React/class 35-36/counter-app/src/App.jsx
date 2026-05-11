@@ -11,12 +11,17 @@ import Products from './data/Product'
 import Todo from './components/Todo'
 import Form from './components/Form'
 import FormV2 from './components/FormV2'
+import TempInput from './components/TempInput'
+import TempDisplay from './components/TempDisplay'
 
 function App() {
+  const [temperature, setTemperature] = useState("");
   return(
     <div>
+      <TempInput temperature={temperature} setTemperature={setTemperature}/>
+      <TempDisplay temperature={temperature}/>
       {/* <Form/> */}
-      <FormV2/>
+      {/* <FormV2/> */}
       {/* <Counter/>
       <UserCard user={User} />  
       <ProductList products={Products}/>

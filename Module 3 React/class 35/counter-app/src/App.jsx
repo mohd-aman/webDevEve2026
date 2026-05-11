@@ -9,14 +9,18 @@ import User from './data/User'
 import ProductList from './components/ProductList'
 import Products from './data/Product'
 import Todo from './components/Todo'
+import Form from './components/Form'
+import FormV2 from './components/FormV2'
 
 function App() {
   return(
     <div>
-      <Counter/>
+      {/* <Form/> */}
+      <FormV2/>
+      {/* <Counter/>
       <UserCard user={User} />  
       <ProductList products={Products}/>
-      <Todo/>
+      <Todo/> */}
     </div>
   )
 }

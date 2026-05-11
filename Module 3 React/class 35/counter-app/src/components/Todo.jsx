@@ -1,13 +1,13 @@
 import { useState } from "react";
 
 export default function Todo() {
+	const [inputValue,setInputValue] = useState("");
   const [taskList, setTaskList] = useState([
-    { id: 1, taskName: "Task1" },
-    { id: 2, taskName: "Task 3" },
-		{ id: 3, taskName: "Task 4" },
-		{ id: 4, taskName: "Task 5" },
-		{ id: 5, taskName: "Task 6" },
   ]);
+
+	const handleChange = (e)=>{
+		setInputValue(e.target.value);
+	}
 
 	const handleDelete = (taskId)=>{
 		const filteredTaskList = taskList.filter(({id,taskName})=>{
@@ -16,18 +16,30 @@ export default function Todo() {
 		setTaskList(filteredTaskList);
 	}
 
+	const handleAddTask = ()=>{
+		const taskToBeAdded = {
+			id:Math.floor(Math.random()*100),
+			taskName:inputValue
+		}
+		const taskListCopy = [...taskList];
+		taskListCopy.push(taskToBeAdded);
+		setTaskList(taskListCopy);
+		setInputValue("");
+	}
+
   return (
     <div>
+			<h1>Todo </h1>
       <div className="add-task-container">
-        <input type="text" />
-        <button>Add Task</button>
+        <input type="text" value={inputValue} onChange={handleChange} />
+        <button onClick={handleAddTask}>Add Task</button>
       </div>
       <div className="task-list-container">
         {taskList.map((task) => {
           const id = task.id;
           const taskName = task.taskName;
           return (
-            <div className="task-container">
+            <div key={id} className="task-container">
               <h3>{taskName}</h3>
               <button onClick={()=>handleDelete(id)}>Delete Task</button>
             </div>

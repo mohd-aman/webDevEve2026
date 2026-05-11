@@ -1,5 +1,5 @@
 export default function ProductList({products}){
-    console.log(products);
+    // console.log(products);
     const handleAddToCart = (name,price)=>{
         console.log(`Product Name is ${name}, Price is ${price}$`)
     }
@@ -7,7 +7,7 @@ export default function ProductList({products}){
       <ul className="product-list-container">
         {products.map(({ id, name, price }) => {
           return (
-            <li className="product-container">
+            <li key={id} className="product-container">
               <div>
                 {name} - {price}
               </div>

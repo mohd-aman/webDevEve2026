@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 export default function UserCard({ user }) {
-  console.log(user);
+//   console.log(user);
   const [showEmail,setShowEmail] = useState(true);
   const handleEmailToggle = ()=>{
     if(showEmail){

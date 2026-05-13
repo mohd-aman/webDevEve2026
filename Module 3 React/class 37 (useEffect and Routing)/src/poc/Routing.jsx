@@ -6,18 +6,18 @@ export function Nav() {
       <h2>I am Navbar</h2>
       <nav>
         <ul>
-            <li>
-                <Link to="/">Home Page</Link>
-            </li>
-            <li>
-                <Link to="/about">About Page</Link>
-            </li>
-            <li>
-                <Link to="/listing">Listing Page</Link>
-            </li>
-            <li>
-                <Link to="/fdaslfd">Page not found test</Link>
-            </li>
+          <li>
+            <Link to="/">Home Page</Link>
+          </li>
+          <li>
+            <Link to="/about">About Page</Link>
+          </li>
+          <li>
+            <Link to="/listing">Listing Page</Link>
+          </li>
+          <li>
+            <Link to="/fdaslfd">Page not found test</Link>
+          </li>
         </ul>
       </nav>
     </div>
@@ -25,20 +25,22 @@ export function Nav() {
 }
 
 export function About() {
-  return <div>
-    <h2>About Page</h2>
-    <Routes>
-        <Route path="company" element={<Company/>}/>
-        <Route path="founder" element={<Founder/>}/>
-    </Routes>
-  </div>;
+  return (
+    <div>
+      <h2>About Page</h2>
+      <Routes>
+        <Route path="company" element={<Company />} />
+        <Route path="founder" element={<Founder />} />
+      </Routes>
+    </div>
+  );
 }
 
 function Company() {
-    return <h4> We are  a good firm</h4>
+  return <h4> We are a good firm</h4>;
 }
 function Founder() {
-    return <h4> We are Nice People </h4>
+  return <h4> We are Nice People </h4>;
 }
 
 export function Home() {

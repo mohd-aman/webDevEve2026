@@ -13,7 +13,7 @@ export default function Home() {
       const resp = await axios.get(
         `https://api.themoviedb.org/3/trending/movie/day?api_key=3aec63790d50f3b9fc2efb4c15a8cf99&language=en-US&page=${pageNo}`,
       );
-      console.log(resp.data);
+      // console.log(resp.data);
       const updatedMovieList = resp.data.results;
       setMoviesList(updatedMovieList);
     };

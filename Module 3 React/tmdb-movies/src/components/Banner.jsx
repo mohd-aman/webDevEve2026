@@ -1,13 +1,16 @@
-export default function Banner() {
+import { urlToPosterPath } from "../utility/moviesUtility";
+
+export default function Banner({url,title}) {
+  const posterPath = urlToPosterPath(url);
   return (
     <main className="relative">
       <img
-        className="h-[70vh] w-screen"
-        src="https://fastly.picsum.photos/id/10/2500/1667.jpg?hmac=J04WWC_ebchx3WwzbM-Z4_KC_LeLBWr5LZMaAkWkF68"
+        className="h-[70vh] w-screen object-fill"
+        src={posterPath}
         alt="banner-image"
       />
       <p className="absolute text-black-700 text-2xl bottom-0.5 w-full text-center bg-white">
-        A Marvel Television Special Presentation - The Punisher: One Last Kill
+        {title}
       </p>
     </main>
   );

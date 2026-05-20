@@ -27,8 +27,16 @@ export const getGenreFromId = (genre_id) => {
 
 export const filterBasedOnGenre = (movieList, selectedGenre) => {
   if (selectedGenre === ALL_GENRE) return movieList;
-  return movieList.filter((movieObj) => {
+  const filteredList = movieList.filter((movieObj) => {
     const currentMovieGenre = getGenreFromId(movieObj.genre_ids[0]);
     return selectedGenre === currentMovieGenre
   });
+  return filteredList;
 };
+
+export const filterBasedOnSearch = (movieList,searchValue)=>{
+  const filteredList = movieList.filter((movieObj)=>{
+    return movieObj.title.toLowerCase().includes(searchValue.toLowerCase())
+  })
+  return filteredList;
+}

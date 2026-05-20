@@ -4,9 +4,8 @@ import Banner from "../components/Banner";
 import Movies from "../components/Movies";
 import Pagination from "../components/Pagination";
 
-export default function Home() {
+export default function Home({pageNo,setPageNo}) {
   const [moviesList, setMoviesList] = useState([]);
-  const [pageNo,setPageNo] = useState(1);
 
   useEffect(() => {
     const fetchData = async () => {

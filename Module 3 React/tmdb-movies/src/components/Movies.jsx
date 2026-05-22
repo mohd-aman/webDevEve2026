@@ -4,9 +4,12 @@ import {
   updateLocalStorageWatchList,
   getWatchListFromLocalStorage,
 } from "../utility/moviesUtility";
+import { useContext } from "react";
+import MovieContext from "../context/MovieContext";
 
-export default function Movies({ moviesList }) {
+export default function Movies() {
   const [watchList, setWatchList] = useState(getWatchListFromLocalStorage);
+  const moviesList = useContext(MovieContext);
 
   const handleAddToWatchList = (movieToAdd) => {
     const updatedWatchList = [...watchList];

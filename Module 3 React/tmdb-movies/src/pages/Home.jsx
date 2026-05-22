@@ -3,9 +3,13 @@ import { useState, useEffect } from "react";
 import Banner from "../components/Banner";
 import Movies from "../components/Movies";
 import Pagination from "../components/Pagination";
+import { useContext } from "react";
+import PaginationContext from "../context/PaginationContext";
+import MovieContext from "../context/MovieContext";
 
-export default function Home({pageNo,setPageNo}) {
+export default function Home() {
   const [moviesList, setMoviesList] = useState([]);
+  const {pageNo} = useContext(PaginationContext);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -27,8 +31,10 @@ export default function Home({pageNo,setPageNo}) {
       {moviesList.length > 0 && (
         <div>
           <Banner url={moviesList[0].poster_path} title={moviesList[0].title}  />
-          <Movies moviesList={moviesList} />
-          <Pagination pageNo={pageNo} setPageNo={setPageNo}/>
+          <MovieContext.Provider value={moviesList} >
+            <Movies />
+          </MovieContext.Provider>
+          <Pagination/>
         </div>
       )}
     </div>

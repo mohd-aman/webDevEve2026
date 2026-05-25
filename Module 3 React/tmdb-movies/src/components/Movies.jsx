@@ -6,17 +6,17 @@ import {
 } from "../utility/moviesUtility";
 import { useContext } from "react";
 import MovieContext from "../context/MovieContext";
+import { useSelector } from "react-redux";
 
 export default function Movies() {
   const [watchList, setWatchList] = useState(getWatchListFromLocalStorage);
-  const moviesList = useContext(MovieContext);
+  const {moviesList} = useSelector((store)=>store.movieState);
 
   const handleAddToWatchList = (movieToAdd) => {
     const updatedWatchList = [...watchList];
     updatedWatchList.push(movieToAdd);
     updateLocalStorageWatchList(updatedWatchList);
     setWatchList(updatedWatchList);
-    // setWatchList([...watchList, movieToAdd]);
   };
 
   const handleRemoveFromWatchList = (id) => {

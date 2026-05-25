@@ -6,10 +6,14 @@ import './App.css'
 import CounterRedux from './components/CounterRedux'
 import {Provider} from "react-redux";
 import store from './redux/store'
+import Todo from './components/Todo'
+import User from './components/User'
 
 function App() {
   return (
     <Provider store={store}>
+      <User/>
+      <Todo/>
       <CounterRedux/>
     </Provider>
   )

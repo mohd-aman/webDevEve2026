@@ -1,3 +1,5 @@
+import ItemList from "./ItemList";
+import LargeArraySum from "./LargeArraySum";
 
 
 export default function Homepage(){
@@ -5,6 +7,8 @@ export default function Homepage(){
     <div>
       <h1>Home Page</h1>
       <p>Welcome to the home page</p>
+      <LargeArraySum/>
+      <ItemList/>
     </div>
   )
 }

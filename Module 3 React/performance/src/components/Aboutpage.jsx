@@ -1,3 +1,4 @@
+import ItemList from "./ItemList";
 
 
 export default function Aboutpage(){
@@ -5,6 +6,7 @@ export default function Aboutpage(){
     <div>
       <h1>About Page</h1>
       <p>Learn more about us in this page</p>
+      <ItemList/>
     </div>
   )
 }

@@ -4,13 +4,18 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import AppV2 from './AppV2';
+import PocUseRef from './components/MachineCoding/PocUseRef';
+import PocUseRef2 from './components/MachineCoding/PocUseRef2';
+import AppV3 from './AppV3';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  <div>
     {/* <App /> */}
-    <AppV2/>
-  </React.StrictMode>
+    {/* <AppV2/> */}
+    {/* <PocUseRef/> */}
+    <AppV3/>
+    </div>
 );
 
 // If you want to start measuring performance in your app, pass a function
